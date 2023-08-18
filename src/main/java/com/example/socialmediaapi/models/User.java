@@ -27,6 +27,10 @@ public class User {
     @OneToMany(mappedBy = "creater")
     private List<Post> books;
 
+    @Column(name = "password")
+    @NotEmpty(message = "Password should not be empty")
+    private String password;
+
     public User(int id, String name, String email) {
         this.id = id;
         this.name = name;
@@ -66,5 +70,13 @@ public class User {
 
     public void setBooks(List<Post> books) {
         this.books = books;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
