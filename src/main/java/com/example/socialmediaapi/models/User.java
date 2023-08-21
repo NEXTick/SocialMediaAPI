@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @Column(name = "id")
@@ -25,7 +25,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "creater")
-    private List<Post> books;
+    private List<Post> posts;
 
     @Column(name = "password")
     @NotEmpty(message = "Password should not be empty")
@@ -64,12 +64,12 @@ public class User {
         this.email = email;
     }
 
-    public List<Post> getBooks() {
-        return books;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setBooks(List<Post> books) {
-        this.books = books;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public String getPassword() {

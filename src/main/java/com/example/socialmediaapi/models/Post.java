@@ -31,7 +31,7 @@ public class Post {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User creater;
 
-    @Column(name = "creationDate")
+    @Column(name = "creation_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
