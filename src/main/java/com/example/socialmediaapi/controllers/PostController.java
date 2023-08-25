@@ -2,17 +2,15 @@ package com.example.socialmediaapi.controllers;
 
 
 import com.example.socialmediaapi.models.Post;
+import com.example.socialmediaapi.models.User;
 import com.example.socialmediaapi.services.PostService;
 import com.example.socialmediaapi.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("{userId}/posts")
+@RequestMapping("posts")
 public class PostController {
 
     private final PostService postService;
@@ -24,11 +22,29 @@ public class PostController {
         this.userService = userService;
     }
 
-    @GetMapping()
-    List<Post> findAll() {
-        return postService.findAll()
+    @PostMapping()
+    public String create(@ModelAttribute("post") @Valid Post post, @ModelAttribute("user") User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ""; //TO DO
+        }
+        postService.save(post, user);
+        return ""; //TO DO
     }
 
-    @PostMapping()
-    public String
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("post") @Valid Post post,BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if (bindingResult.hasErrors()) {
+            return ""; //TO DO
+        }
+        postService.update(id, post);
+        return ""; //TO DO
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        postService.delete(id);
+        return ""; //TO DO
+    }
+
 }

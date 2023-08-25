@@ -8,6 +8,8 @@ import com.example.socialmediaapi.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @Transactional
 public class PostService {
@@ -22,6 +24,7 @@ public class PostService {
 
     public void save(Post post, User user) {
         post.setCreater(user);
+        post.setCreationDate(new Date());
         postRepository.save(post);
     }
 

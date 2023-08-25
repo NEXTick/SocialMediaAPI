@@ -1,6 +1,6 @@
 package com.example.socialmediaapi.security;
 
-import com.example.socialmediaapi.services.UserDetailsService;
+import com.example.socialmediaapi.services.UserDetailsServiceImpl;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,10 +12,10 @@ import java.util.Collections;
 
 public class AuthProviderImpl implements AuthenticationProvider {
 
-    private final UserDetailsService personDetailsService;
+    private final UserDetailsServiceImpl personDetailsService;
 
 
-    public AuthProviderImpl(UserDetailsService personDetailsService) {
+    public AuthProviderImpl(UserDetailsServiceImpl personDetailsService) {
         this.personDetailsService = personDetailsService;
     }
 

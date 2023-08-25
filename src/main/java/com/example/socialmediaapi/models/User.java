@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -30,6 +31,15 @@ public class User {
     @Column(name = "password")
     @NotEmpty(message = "Password should not be empty")
     private String password;
+
+    @ManyToMany
+    private Set<User> subscribers;
+
+    @ManyToMany
+    private Set<User> subscriptions;
+
+    @Column(name = "friends")
+    private Set<User> friends;
 
     public User(int id, String name, String email) {
         this.id = id;

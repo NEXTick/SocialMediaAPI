@@ -4,6 +4,7 @@ package com.example.socialmediaapi.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -81,5 +82,17 @@ public class Post {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", header='" + header + '\'' +
+                ", image=" + Arrays.toString(image) +
+                ", creater=" + creater +
+                ", creationDate=" + creationDate +
+                '}';
     }
 }
